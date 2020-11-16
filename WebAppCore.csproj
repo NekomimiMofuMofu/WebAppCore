@@ -2,11 +2,35 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+ <SpaRoot>vue_client\</SpaRoot>
   </PropertyGroup>
+
+  <ItemGroup>
+    <!-- $(SpaRoot)\* をビルド時に出力しない -->
+    <Content Remove="$(SpaRoot)**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="vue_client\package-lock.json" />
+    <Content Include="vue_client\package.json" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="5.0.0" />
   </ItemGroup>
 
+  <!-- dotnet publish 実行時に以下を実行する -->
+  <Target Name="RunWebpack" AfterTargets="ComputeFilesToPublish">
+    <!-- 本番環境用ビルド "npm run build" を実行する-->
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build" />
 
+    <ItemGroup>
+      <!-- $(SpaRoot)dist\* を publish にコピーする -->
+      <DistFiles Include="$(SpaRoot)dist\**" />
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+        <RelativePath>%(DistFiles.Identity)</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
 </Project>
