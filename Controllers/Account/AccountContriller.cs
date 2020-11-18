@@ -1,5 +1,6 @@
 using System;
 using System.Net;
+using System.Security.Cryptography;
 using Microsoft.AspNetCore.Mvc;
 using System.Text;
 
@@ -9,6 +10,12 @@ namespace WebAppCore.Controllers.Account {
 	[ApiController]
 	[Route("api/[controller]")]
 	public class AccountController : ControllerBase {
+
+		/// <summary>
+		/// ログインAPI
+		/// </summary>
+		/// <param name="request">リクエストデータ</param>
+		/// <returns>Response</returns>
 		[HttpGet("login")]
 		public ActionResult<AccountItem> Get(string request) {
 			AccountItem item = new AccountItem();
@@ -18,6 +25,9 @@ namespace WebAppCore.Controllers.Account {
 				item.AccessToken = decode[(decode.IndexOf('%') + 1)..];
 				item.StatusCode = AccountItemErrorCheck(item);
 				Response.StatusCode = (int)item.StatusCode;
+				if (item.StatusCode == HttpStatusCode.OK) {
+					item.AccessToken = decode + DateTime.Now.ToString("&yyyy-MM-dd:hh-mm-ss");
+				}
 			} catch {
 				item.Id = "Error";
 				item.AccessToken = "Error";
