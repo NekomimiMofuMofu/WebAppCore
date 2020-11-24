@@ -17,7 +17,7 @@ namespace WebAppCore.Controllers.Account {
 		/// <param name="request">リクエストデータ</param>
 		/// <returns>Response</returns>
 		[HttpGet("login")]
-		public ActionResult<AccountItem> Get(string request) {
+		public ActionResult<AccountItem> Login(string request) {
 			AccountItem item = new AccountItem();
 			try {
 				string decode = Encoding.UTF8.GetString(Convert.FromBase64String(request));
