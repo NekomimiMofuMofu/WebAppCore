@@ -1,8 +1,8 @@
 using System;
 using System.Net;
-using System.Security.Cryptography;
 using Microsoft.AspNetCore.Mvc;
 using System.Text;
+using WebAppCore.Util;
 
 #nullable enable
 
@@ -27,6 +27,7 @@ namespace WebAppCore.Controllers.Account {
 				Response.StatusCode = (int)item.StatusCode;
 				if (item.StatusCode == HttpStatusCode.OK) {
 					item.AccessToken = decode + DateTime.Now.ToString("&yyyy-MM-dd:hh-mm-ss");
+					item.AccessToken = Sha256Util.GetSha256HashedString(item.AccessToken);
 				}
 			} catch {
 				item.Id = "Error";
