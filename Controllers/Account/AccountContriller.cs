@@ -46,9 +46,28 @@ namespace WebAppCore.Controllers.Account {
 		/// <returns>不整合があった場合<see cref="HttpStatusCode.BadRequest"/></returns>
 		private static HttpStatusCode AccountItemErrorCheck(AccountItem item) {
 			if (item.Id.Equals(string.Empty) || item.AccessToken.Equals(string.Empty)) {
+				item.AccessToken = "EmptyError";
+				return HttpStatusCode.BadRequest;
+			}
+
+			if (UserCheck(item.Id) == HttpStatusCode.BadRequest) {
+				item.AccessToken = null;
+				return HttpStatusCode.BadRequest;
+			}
+
+			if (PassCheck(item.AccessToken) == HttpStatusCode.BadRequest) {
+				item.AccessToken = null;
 				return HttpStatusCode.BadRequest;
 			}
 			return HttpStatusCode.OK;
+		}
+
+		private static HttpStatusCode UserCheck(string userid) {
+			return userid.Equals("root") ? HttpStatusCode.OK : HttpStatusCode.BadRequest;
+		}
+		
+		private static HttpStatusCode PassCheck(string password) {
+			return password.Equals("password") ? HttpStatusCode.OK : HttpStatusCode.BadRequest;
 		}
 	}
 }
