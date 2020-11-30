@@ -1,0 +1,34 @@
+<html><head>
+    <!--
+    Load various Web Components polyfills required by IE and Edge. While the polyfills are
+    not needed for other browsers, they're loaded irrespective of browser features because we rely
+    on the polyfill's `WebComponentsReady` event as a signal that the app is ready to be initialized
+    (see init.js).
+    -->
+    <!-- Polyfill Web Components. -->
+    <script src="webcomponentsjs/webcomponents-lite.js"></script>
+
+    <!-- Polyfill Web Animations. This file is necessary for some paper elements. -->
+    <script src="webcomponentsjs/web-animations-next-lite.min.js"></script>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Roboto:regular">
+
+    <script src="preview_polymer.js"></script>
+
+    <style>
+      body {
+        margin: 0;
+      }
+
+      tf-creative-preview {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  <script>window.gwdPreview = {"config":{"uuid":1606280179711,"previewPath":"index.html","modes":["mobile","desktop"],"sizes":[],"feeds":{},"feedNames":[],"defaults":{"mode":"desktop","modeSettings":{"mobile":{"device":"pixel2xl","feed":null},"desktop":{"feed":null}}}},"strings":{"MSG_ALL_FEEDS_MODE":"\u3059\u3079\u3066\u306e\u30b5\u30f3\u30d7\u30eb\u30c7\u30fc\u30bf","MSG_ALL_SIZES_MODE":"\u3059\u3079\u3066\u306e\u30b5\u30a4\u30ba","MSG_CUSTOM":"\u30ab\u30b9\u30bf\u30e0","MSG_CUSTOM_SIZE":"\u30ab\u30b9\u30bf\u30e0\u30b5\u30a4\u30ba\u306e\u5165\u529b","MSG_DESKTOP_MODE":"\u30d1\u30bd\u30b3\u30f3","MSG_DEVICE":"\u30c7\u30d0\u30a4\u30b9","MSG_MOBILE_MODE":"\u30e2\u30d0\u30a4\u30eb","MSG_NO_SAMPLE_DATA":"\u30b5\u30f3\u30d7\u30eb\u30c7\u30fc\u30bf\u306a\u3057","MSG_NO_SAMPLE_DATA_TO_PREVIEW":"\u30d7\u30ec\u30d3\u30e5\u30fc\u3092\u8868\u793a\u3059\u308b\u306b\u306f\u3001\u30b5\u30f3\u30d7\u30eb\u30c7\u30fc\u30bf\u3092\u9078\u629e\u3057\u3066\u304f\u3060\u3055\u3044\u3002","MSG_NO_SIZES_TO_PREVIEW":"\u30d7\u30ec\u30d3\u30e5\u30fc\u3092\u8868\u793a\u3059\u308b\u306b\u306f\u3001\u30b5\u30a4\u30ba\u3092\u9078\u629e\u3057\u3066\u304f\u3060\u3055\u3044\u3002","MSG_NONE_SELECTED":"\u4f55\u3082\u9078\u629e\u3055\u308c\u3066\u3044\u307e\u305b\u3093","MSG_PARALLAX_MODE":"\u30b9\u30af\u30ed\u30fc\u30eb\u53ef\u80fd","MSG_PREVIEW_MODE":"\u30d7\u30ec\u30d3\u30e5\u30fc \u30e2\u30fc\u30c9","MSG_RELOAD":"\u518d\u8aad\u307f\u8fbc\u307f","MSG_RELOAD_ALL":"\u3059\u3079\u3066\u518d\u8aad\u307f\u8fbc\u307f","MSG_ROTATE_DEVICE":"\u30c7\u30d0\u30a4\u30b9\u3092\u56de\u8ee2","MSG_SAMPLE_FEED":"\u30b5\u30f3\u30d7\u30eb\u30c7\u30fc\u30bf","MSG_SAMPLE_FEEDS":"\u30b5\u30f3\u30d7\u30eb\u30c7\u30fc\u30bf","MSG_SELECT_ALL":"\u3059\u3079\u3066\u9078\u629e","MSG_SELECT_NONE":"\u9078\u629e\u306e\u89e3\u9664","MSG_SELECTED":"{num} \u4ef6\u9078\u629e\u6e08\u307f","MSG_SHOW_SIZE":"\u30b5\u30a4\u30ba\u306e\u8868\u793a","MSG_SHOW_SIZES":"\u30b5\u30a4\u30ba\u306e\u8868\u793a","MSG_SINGLE_MODE":"\u5358\u4e00\u30b5\u30a4\u30ba","MSG_VIEWPORT_SIZE":"\u30d3\u30e5\u30fc\u30dd\u30fc\u30c8\u306e\u30b5\u30a4\u30ba"}};</script></head>
+
+  <body>
+    <tf-creative-preview id="preview-app"></tf-creative-preview>
+  
+
+</body></html>
