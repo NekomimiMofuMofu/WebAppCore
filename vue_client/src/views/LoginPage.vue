@@ -1,12 +1,15 @@
 <template>
   <div class="login">
-    <h1>ログイン</h1>
+    <h1>Login</h1>
     <dl class="login_input">
-      <dt><label for="i_user_id">ユーザーID</label></dt>
-      <dt><input id="i_user_id" type="text" placeholder="ユーザーID" name="i_user_id" v-model="user_id"></dt>
-      <dt><label for="i_password">パスワード</label></dt>
-      <dt><input id="i_password" type="password" placeholder="パスワード" name="i_password" v-model="password"></dt>
-      <dt><button id="btn_login" type="button" @click="onClick" name="btn_login" >ログイン</button></dt>
+      <dt><label for="i_user_id">UserName</label></dt>
+      <dt><input id="i_user_id" type="text" placeholder="" name="i_user_id" v-model="user_id"></dt>
+      <dt><label for="i_password">PassWord</label></dt>
+      <dt><input id="i_password" type="password" placeholder="" name="i_password" v-model="password"></dt>
+      <dt>
+        <button id="btn_signIn" type="button" @click="onClick1" name="btn_signIn" >Sign In</button>
+        <button id="btn_signUp" type="button" @click="onClick2" name="btn_signUp" >Sign Up</button>
+      </dt>
     </dl>
   </div>
 </template>
@@ -24,13 +27,14 @@ export default class LoginPage extends Vue {
 
   private error_message = "IDかパスワードが間違ってるよ";
   
-  private onClick(): void {
+  private onClick1(): void {
     if(this.user_id == this.id_validate && this.password == this.pass_validate){
       this.$router.push("/about");
     }else {
       alert(this.error_message);
     }
   }
+  
 }
 
 </script>
@@ -38,7 +42,7 @@ export default class LoginPage extends Vue {
 <style scoped lang="scss">
 .login {
   margin: 100px;
-  padding: 20px;
+  padding: 30px 60px;
   
   .login_input {
     
@@ -48,6 +52,7 @@ export default class LoginPage extends Vue {
 
 h1 {
   color: #76f8e2;
+  font-size: xxx-large;
 }
 
 label {
@@ -56,6 +61,10 @@ label {
 }
 
 input {
+  
+}
+
+button {
   
 }
 
