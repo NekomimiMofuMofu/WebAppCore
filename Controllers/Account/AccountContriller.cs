@@ -69,5 +69,25 @@ namespace WebAppCore.Controllers.Account {
 		private static HttpStatusCode PassCheck(string password) {
 			return password.Equals("password") ? HttpStatusCode.OK : HttpStatusCode.BadRequest;
 		}
+		
+		[HttpGet("createAccount")]
+		public ActionResult<CaResult> CreateAccount(string id, string password, string email, string psCheck, string emCheck) {
+			CaResult result = new CaResult {Id = id, Password = password, EMail = email};
+			if (password.Equals(psCheck) || email.Equals(emCheck)) {
+				Response.StatusCode = 400;
+			}
+			
+			return result;
+		}
+
+		public class CaResult {
+
+			public string Id { get; set; } = string.Empty;
+
+			public string Password { get; set; } = string.Empty;
+
+			public string EMail { get; set; } = string.Empty;
+
+		}
 	}
 }
