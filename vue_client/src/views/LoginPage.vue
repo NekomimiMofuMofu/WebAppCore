@@ -1,11 +1,13 @@
 <template>
   <div class="login">
     <h1>ログイン</h1>
-    <label for="i_user_id">ユーザーID</label>
-    <input id="i_user_id" type="text" placeholder="ユーザーID" name="i_user_id" v-model="user_id">
-    <label for="i_password">パスワード</label>
-    <input id="i_password" type="password" placeholder="パスワード" name="i_password" v-model="password">
-    <button id="btn_login" type="button" @click="onClick" name="btn_login" >ログイン</button>
+    <dl class="login_input">
+      <dt><label for="i_user_id">ユーザーID</label></dt>
+      <dt><input id="i_user_id" type="text" placeholder="ユーザーID" name="i_user_id" v-model="user_id"></dt>
+      <dt><label for="i_password">パスワード</label></dt>
+      <dt><input id="i_password" type="password" placeholder="パスワード" name="i_password" v-model="password"></dt>
+      <dt><button id="btn_login" type="button" @click="onClick" name="btn_login" >ログイン</button></dt>
+    </dl>
   </div>
 </template>
 
@@ -34,5 +36,27 @@ export default class LoginPage extends Vue {
 </script>
 
 <style scoped lang="scss">
+.login {
+  margin: 100px;
+  padding: 20px;
+  
+  .login_input {
+    
+  }
+  
+}
+
+h1 {
+  color: #76f8e2;
+}
+
+label {
+  
+  padding-right: 90px ;
+}
+
+input {
+  
+}
 
 </style>
